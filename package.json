@@ -1,0 +1,25 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "CRUD API REST MVC + REACT NATIVE",
+  "author": "Eric Torres Andrade <erictorresandrade.1@gmail.com>",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "@appandflow/touchable": "^1.2.1",
+    "@expo/react-native-action-sheet": "^1.0.0",
+    "date-fns": "^1.28.5",
+    "expo": "^20.0.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+    "react-native-vector-icons": "^4.3.0",
+    "react-navigation": "^1.0.0-beta.11",
+    "styled-components": "^2.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-equimper": "^2.2.1",
+    "eslint-config-prettier": "^2.3.0",
+    "prettier": "^1.5.3"
+  }
+}
