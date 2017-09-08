@@ -27,7 +27,7 @@ export default class App extends React.Component {
   async componentDidMount(){
     this.setState({loading: true});
     const data = await this.props.getClients();
-    setTimeout(() => this.setState({loading: false, clients: data.clients}),2000);
+    setTimeout(() => this.setState({loading: false, clients: data}),2000);
   }
 
   render() {
