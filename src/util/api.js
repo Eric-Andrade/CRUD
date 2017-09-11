@@ -9,8 +9,12 @@ class KityPlanchoAPI {
     }
 
     async getClients (){
-        const { data } = await axios.get(this.path)
-        return data;
+       try {
+            const { data } = await axios.get(this.path)
+            return data;
+       } catch (error) {
+            console.log(e);
+       }
     }
 }
 

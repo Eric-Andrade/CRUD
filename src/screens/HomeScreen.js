@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
+import { connect } from 'react-redux';
 import Touchable from '@appandflow/touchable';
 import { colors } from '../util/constants';
-import { KityPlanchoAPI } from '../util/api';
 import { LoadingScreen } from '../commons/LoadingScreen'
-
-const kityplanchoAPI = new KityPlanchoAPI();
+import { fetchClients } from './redux/actions'
 
 const Root = styled.View`
     flex: 1;
@@ -39,32 +38,38 @@ const Touch = styled(Touchable).attrs({
     justifyContent: center;
 `;
 
-class HomeScreen extends Component {
-    static defaultProps = {
-        kityplanchoAPI
-    }
+@connect(state => ({
+    Clients: state.home.Clients
+    }),
+    { fetchClients })
 
-    state = { 
-        loading: false,
-        clients: []
-    }
+class HomeScreen extends Component {
     
-    async componentDidMount(){
-        this.setState({loading: true});
-        const clients = await this.props.kityplanchoAPI.getClients();
-        setTimeout(() => this.setState({ loading: false, clients}), 100)
+    componentDidMount(){
+        this.props.fetchClients();
     }
 
     render() {
-        if(this.state.loading){
+        const { Clients: {
+            isFetched,
+            data, 
+            error
+        } 
+    } = this.props; 
+        if(!isFetched){
             return <LoadingScreen />
+        } else if (error.on){
+            return (
+                <Root>
+                    <T>{error.on}</T>
+                </Root>
+            )
         }
-        const clients = this.state.clients;
         return (
             <Root>
                 <ListContainer>
                 <FlatList
-                    data={clients}
+                    data={data}
                     renderItem={
                         ({item: client}) => (
                             <ListItemsContainer>
