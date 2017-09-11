@@ -30,7 +30,7 @@ const Touch = styled(Touchable).attrs({
     feedback: 'opacity',
     hitSlot: {top: 15, bottom: 15, right: 15, left: 15}
 })`
-    backgroundColor: ${colors.GRAY900};
+    backgroundColor: ${colors.PRIMARY};
     padding: 10px;
     height: 60;
     width:100%;
