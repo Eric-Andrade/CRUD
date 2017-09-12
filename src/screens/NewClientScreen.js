@@ -21,13 +21,13 @@ const InputContainer = styled.View`
     marginTop: 5;
 `;
 const Input = styled.TextInput.attrs({
-    placeholderTextColor: colors.GRAY777,
+    placeholderTextColor: colors.GRAY600,
     autoCorrect: false,
 })`
     marginHorizontal: 10;
     width: 90%;
     height: 40;
-    color: ${props => props.theme.WHITE};
+    color: ${props => props.theme.GRAY777};
 
 `;
 const ButtonSubmit = styled(Touchable).attrs({

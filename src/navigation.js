@@ -33,13 +33,16 @@ const TNavigator = TabNavigator({
 },{
     lazy: true,
     tabBarPosition: 'bottom',
-    swipeEnabled: false, 
+    swipeEnabled: false,
+    animationEnabled: false,
     initialRouteName: 'Home',
     tabBarOptions:{
         showIcon: true,
         showLabel: true,
         activeTintColor: colors.PRIMARY,
         inactiveTintColor: '#333',
+        pressColor: colors.PRIMARY,
+        indicatorStyle: { backgroundColor: colors.PRIMARY },
         style:{
             backgroundColor: colors.WHITE,
             height: 47,

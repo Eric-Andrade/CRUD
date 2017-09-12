@@ -25,17 +25,16 @@ const T = styled.Text`
     fontSize: 16;
     textAlign: left;
 `;
-const ListItemsContainer = styled.View`
-    flexDirection: row
-    alignItems: center;
-    backgroundColor: ${colors.WHITE};
-    padding: 5px;
-    marginVertical: 1.5;
-`;
-const Touch = styled(Touchable).attrs({
+const ListItemsContainer = styled(Touchable).attrs({
     feedback: 'opacity',
     hitSlot: {top: 15, bottom: 15, right: 15, left: 15}
 })`
+    flexDirection: row
+    alignItems: center;
+    backgroundColor: ${colors.WHITE};
+    marginVertical: 1.5;
+`;
+const Touch = styled.View`
     flex: 1
     height: 60;
     width: 100%;    
