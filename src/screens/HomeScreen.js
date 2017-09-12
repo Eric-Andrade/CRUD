@@ -7,35 +7,51 @@ import { colors } from '../util/constants';
 import { LoadingScreen } from '../commons/LoadingScreen'
 import { fetchClients } from './redux/actions'
 
+const kpLogoSize = 40;
+const logoRadius = kpLogoSize / 2;
+
 const Root = styled.View`
     flex: 1;
-    backgroundColor: #282828;
     alignItems: center;
     justifyContent: center;
 `;
 const ListContainer = styled.View`
     flex: 1;
-    width: 100%
+    width: 100%;
+    justifyContent: center;
 `;
 const T = styled.Text`
-    color: ${colors.WHITE};
+    color: ${colors.GRAY600};
     fontSize: 16;
-    textAlign: left
+    textAlign: left;
 `;
 const ListItemsContainer = styled.View`
+    flexDirection: row
     alignItems: center;
-    marginHorizontal: 4;
+    backgroundColor: ${colors.WHITE};
+    padding: 5px;
+    marginVertical: 1.5;
 `;
 const Touch = styled(Touchable).attrs({
     feedback: 'opacity',
     hitSlot: {top: 15, bottom: 15, right: 15, left: 15}
 })`
-    backgroundColor: ${colors.PRIMARY};
-    padding: 10px;
+    flex: 1
     height: 60;
-    width:100%;
-    marginVertical: 1.5;
+    width: 100%;    
     justifyContent: center;
+`;
+const KPLogoContainer = styled.View`
+    flex: 0.2;
+    alignSelf: stretch;
+    alignItems: center;
+    justifyContent: center;
+`;
+const KPLogo = styled.Image`
+    height: ${kpLogoSize};
+    width: ${kpLogoSize};
+    borderRadius: ${logoRadius}
+
 `;
 
 @connect(state => ({
@@ -73,6 +89,9 @@ class HomeScreen extends Component {
                     renderItem={
                         ({item: client}) => (
                             <ListItemsContainer>
+                                <KPLogoContainer>
+                                    <KPLogo source={require('../../assets/logokity.png')}/>
+                                </KPLogoContainer>
                                 <Touch>
                                     <T>{client.ID} | {client.CNOMBRE} {client.CAPELLIDOS}</T>
                                 </Touch>

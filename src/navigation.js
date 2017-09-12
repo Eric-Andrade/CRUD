@@ -5,6 +5,7 @@ import { Keyboard } from 'react-native';
 
 import { colors } from './util/constants';
 import HomeScreen from './screens/HomeScreen';
+import MeScreen from './screens/MeScreen'
 import NewClientScreen from './screens/NewClientScreen';
 import ButtonHeader from './components/ButtonHeader';
 
@@ -17,6 +18,15 @@ const TNavigator = TabNavigator({
             headerTitle: 'Clientes',
             tabBarIcon: ({ tintColor, focused }) =>( 
                 <Ionicons name={focused ? 'ios-people' : 'ios-people-outline'} size={tabIcon} style={{color: tintColor}}/>
+            )
+        })
+    },
+    Perfil:{
+        screen: MeScreen,
+        navigationOptions:() =>({
+            headerTitle: 'Mi perfil',
+            tabBarIcon: ({ tintColor, focused }) =>( 
+                <Ionicons name={focused ? 'ios-person' : 'ios-person-outline'} size={tabIcon} style={{color: tintColor}}/>
             )
         })
     }
@@ -47,9 +57,10 @@ const NewClientModal = StackNavigator({
                     Keyboard.dismiss();
                     navigation.goBack(null)
                     }}>
-                    <EvilIcons name="close" size={30} color={colors.PRIMARY100}/>
+                    <EvilIcons name="close" size={tabIcon} color={colors.PRIMARY}/>
                 </ButtonHeader>
-            )
+            ),
+            headerLeft: (undefined)
         })
     }
 },
@@ -62,15 +73,32 @@ const SNavigator = StackNavigator({
         navigationOptions: ({ navigation }) => ({
             headerRight: (
                 <ButtonHeader side="right" onPress={() => navigation.navigate('NewClient')}>
-                    <Ionicons name='md-person-add' size={tabIcon} color={colors.PRIMARY}/>
+                    <Ionicons name='md-person-add' size={25} color={colors.PRIMARY}/>
                 </ButtonHeader>
             )
         })
     },
     NewClient:{
-        screen: NewClientModal
+        screen: NewClientModal,
+        navigationOptions:() => ({
+            title: 'Nuevo cliente'
+        })
     }
 },{
+    cardStyle: {
+        backgroundColor: colors.GRAY100
+    },
+    navigationOptions: () => ({
+        headerStyle:{
+            backgroundColor: colors.WHITE,
+            borderBottomWidth: 2,
+            borderBottomColor: colors.PRIMARYRGBA,
+        },
+        headerTitleStyle:{
+            color: colors.GRAY600,
+            fontWeight: '400'
+        }
+    }),
     gesturesEnabled: true,
     mode: 'modal',
 })

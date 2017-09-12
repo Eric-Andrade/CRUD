@@ -8,7 +8,7 @@ const Root = styled(Touchable).attrs({
     feedback: 'none'
 })`
     flex: 1;
-    backgroundColor: #282828;
+    backgroundColor: ${props => props.theme.WHITE};
     justifyContent: center;
     alignItems: center;
 `;
@@ -17,7 +17,7 @@ const InputContainer = styled.View`
     alignItems: center;
     width: 90%;
     height: 40;
-    backgroundColor: ${props => props.theme.GRAY900};
+    backgroundColor: ${props => props.theme.GRAY100};
     marginTop: 5;
 `;
 const Input = styled.TextInput.attrs({
